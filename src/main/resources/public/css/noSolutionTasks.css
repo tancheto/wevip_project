@@ -1,0 +1,118 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    display: block;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding-top: 0px;
+    padding-bottom: 40px;
+    background-color: #e6e6e6;
+}
+
+#signout {
+    float: right;
+}
+
+h1 {
+    font-style: italic;
+    padding-bottom: 40px;
+}
+
+#logout {
+    border-radius: 10px;
+}
+
+.navbar {
+    position: fixed;
+    margin-bottom: 0;
+}
+
+.sidenav {
+    height: 100%;
+    width: 250px;
+    margin-top: 40px;
+    position: fixed;
+    color: #3b7991;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav div {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    display: block;
+    transition: 0.3s;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    transition: 0.3s;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav div {
+        font-size: 18px;
+    }
+}
+
+#main {
+    margin-top: 80px;
+}
+
+#main h2 {
+    margin: 10px 20px;
+    display: inline;
+}
+
+.thumbnail {
+    padding: 4px 10px;
+    background-color: #fff;
+    box-shadow: 0px 3px 5px 0px #aaa;
+    border-radius: 0px;
+    position: relative;
+    margin: 10px 20px 0 20px;
+    clear: both;
+}
+
+.marketing {
+    margin-top: 20px;
+    clear: both;
+}
+
+.marketing .col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.marketing h2 {
+    font-weight: 400;
+}
+
+.marketing .col-lg-4 p {
+    margin-right: .75rem;
+    margin-left: .75rem;
+}
+
+.footerHeading {
+    text-align: center;
+}

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -10,10 +10,10 @@
     <title>Математика за матура</title>
 
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/css/index.css}" rel="stylesheet"/>
+    <link th:href="@{/css/loginForm.css}" rel="stylesheet"/>
 </head>
 
-<body>
+<body class="text-center">
 
 <header>
 
@@ -29,45 +29,47 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/index">Начало<span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/index">Начало</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/main">Дялове на математиката</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/noSolutionTasks">Задачи без решения</a>
+                    <a class="nav-link disabled">Задачи без решения</a>
                 </li>
             </ul>
 
             <form class="form-inline my-2 my-lg-0">
-                <a class="nav-link user-p" href="#"></a>
-                <a class="nav-link" href="/loginForm"><img id="logout" th:src="@{/images/logoutIcon.png}" width="30" height="30"/>
-                    <img id="signin" th:src="@{/images/loginIcon.png}" width="30" height="30"/></a>
+                <a class="nav-link" href="/loginForm"><img th:src="@{/images/loginIcon.png}" width="30"
+                                                           height="30"/></a>
             </form>
+
         </div>
 
     </nav>
 
 </header>
 
-<main id="main" role="main">
+<main role="main">
 
-    <div class="carousel-item active" id="myCarousel">
+    <form class="register">
 
-        <img th:src="@{/images/indexImage1.jpg}"/>
+        <img class="mb-4" th:src="@{/images/maths.JPG}" alt="maths" width="80" height="80"/>
 
-        <div class="container">
+        <h2 class="h3 mb-3 font-weight-normal">Вписване</h2>
 
-            <div class="carousel-caption text-right">
-                <h1>Математиката като предпочитано второ ДЗИ</h1>
-                <p>Ако и вие сте от зрелостниците насочили се към математиката, то това е най-подходящото място да
-                    започнете подготовката си.</p>
-                <p><a class="btn btn-lg btn-primary" href="/registrationForm" role="button">Регистриране</a></p>
-            </div>
-        </div>
+        <label for="name">Потребителско име*</label>
+        <input type="text" id="name" class="field" placeholder="Име" required="required" autofocus="autofocus"/>
 
-    </div>
+        <label for="password">Парола*</label>
+        <input type="password" id="password" class="field" placeholder="Парола" required="required"/>
+
+        <button class="btn btn-lg btn-primary btn-block" id="login">Вписване</button>
+
+        <a href="/registrationForm">Нямате регистрация все още?</a>
+
+    </form>
 
     <div class="container marketing">
 
@@ -112,9 +114,10 @@
     </footer>
 
     <script th:src="@{/js/jquery.min.js}"></script>
-    <script th:src="@{/js/logout.js}"></script>
-
+    <script th:src="@{/js/loginForm.js}"></script>
 
 </main>
+
 </body>
+
 </html>
