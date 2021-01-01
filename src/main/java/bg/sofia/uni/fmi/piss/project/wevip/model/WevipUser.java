@@ -10,6 +10,12 @@ public class WevipUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "first_name")
     private String firstName;
 
@@ -19,15 +25,10 @@ public class WevipUser {
     @Column(name = "email")
     private String email;
 
-    public WevipUser(Integer id, String firstName, String lastName, String email) {
-        this.id = id;
+    public WevipUser(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-    }
-
-    public WevipUser(){
-
     }
 
     public long getId() {
@@ -60,5 +61,21 @@ public class WevipUser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
