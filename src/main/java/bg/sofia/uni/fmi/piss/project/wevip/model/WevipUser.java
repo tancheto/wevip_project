@@ -8,7 +8,7 @@ public class WevipUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -19,7 +19,7 @@ public class WevipUser {
     @Column(name = "email")
     private String email;
 
-    public WevipUser(long id, String firstName, String lastName, String email) {
+    public WevipUser(Integer id, String firstName, String lastName, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,7 +34,7 @@ public class WevipUser {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
