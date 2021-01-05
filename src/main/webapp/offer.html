@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -10,7 +10,8 @@
     <title>Математика за матура</title>
 
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/css/index.css}" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link th:href="@{/css/offer.css}" rel="stylesheet"/>
 </head>
 
 <body>
@@ -29,22 +30,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/index">Начало<span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/index">Начало</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/main">Дялове на математиката</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/noSolutionTasks">Задачи без решения</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/noSolutionTasks">Задачи без решения<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
 
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0" id="signout">
                 <a class="nav-link user-p" href="#"></a>
-                <a class="nav-link" href="/loginForm"><img id="logout" th:src="@{/images/logoutIcon.png}" width="30" height="30"/>
-                    <img id="signin" th:src="@{/images/loginIcon.png}" width="30" height="30"/></a>
+                <a class="nav-link" href="/index"><img id="logout" th:src="@{/images/logoutIcon.png}"
+                                                       width="30"
+                                                       height="30"/></a>
             </form>
+
         </div>
 
     </nav>
@@ -53,18 +56,42 @@
 
 <main id="main" role="main">
 
-    <div class="carousel-item active" id="myCarousel">
+    <div id="container-subjects" class="tab-pane fade in active">
 
-        <img th:src="@{/images/indexImage1.jpg}"/>
+        <div class="task">
+            <h2>Задачи без решения</h2>
+            <form>
+                <h3>Задача 1</h3>
 
-        <div class="container">
+                <pre>При записване на всичките 17 данни от проведен експеримент се оказало, че числата в подредения статистически ред образуват
+геометрична прогресия, като най-малкото от тях е 0,03125=2<sup>-5</sup>, а най-голямото е 2048=2<sup>11</sup>. Намерете медианата на тази извадка.</pre>
 
-            <div class="carousel-caption text-right">
-                <h1>Математиката като предпочитано второ ДЗИ</h1>
-                <p>Ако и вие сте от зрелостниците насочили се към математиката, то това е най-подходящото място да
-                    започнете подготовката си.</p>
-                <p><a class="btn btn-lg btn-primary" href="/registrationForm" role="button">Регистриране</a></p>
-            </div>
+                <div class="text-bottom text-right" id="offer"><a role="button" class="btn btn-primary btn-lg">Предложи
+                    решение<i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+
+                <div id="sol">
+                    <h3>Решение:</h3>
+                    <textarea id="solution"></textarea>
+
+                    <h3>Отговор:</h3>
+                    <textarea id="answer"></textarea>
+                    <h3>Използвани теоретични познания:</h3>
+                    <select id="theoryOptions">
+                    </select>
+
+                    <div class="text-bottom text-right" id="send"><a onclick="offer()" role="button"
+                                                                     class="btn btn-primary btn-lg">Изпрати<i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+                </div>
+
+                <div id="success">
+                    <pre>Решението е изпратено успешно!</pre>
+                    <div class="text-bottom text-right" id="back"><a href="/noSolutionTasks"
+                                                                     role="button"
+                                                                     class="btn btn-primary btn-lg">Назад<i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+                </div>
+            </form>
         </div>
 
     </div>
@@ -112,9 +139,8 @@
     </footer>
 
     <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/offer.js}"></script>
     <script th:src="@{/js/logout.js}"></script>
-
-
 </main>
 </body>
 </html>

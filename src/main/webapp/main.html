@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -10,7 +10,7 @@
     <title>Математика за матура</title>
 
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/css/index.css}" rel="stylesheet"/>
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
 </head>
 
 <body>
@@ -29,11 +29,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/index">Начало<span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/main">Дялове на математиката</a>
+                    <a class="nav-link" href="/index">Начало</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/main">Дялове на математиката<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/noSolutionTasks">Задачи без решения</a>
@@ -42,33 +42,39 @@
 
             <form class="form-inline my-2 my-lg-0">
                 <a class="nav-link user-p" href="#"></a>
-                <a class="nav-link" href="/loginForm"><img id="logout" th:src="@{/images/logoutIcon.png}" width="30" height="30"/>
-                    <img id="signin" th:src="@{/images/loginIcon.png}" width="30" height="30"/></a>
+                <a class="nav-link" href="/index"><img id="logout" th:src="@{/images/logoutIcon.png}"
+                                                       width="30"
+                                                       height="30"/></a>
             </form>
+
         </div>
 
     </nav>
 
 </header>
 
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+</div>
+
 <main id="main" role="main">
 
     <div class="carousel-item active" id="myCarousel">
-
-        <img th:src="@{/images/indexImage1.jpg}"/>
-
+        <img th:src="@{/images/indexImage2.jpg}"/>
         <div class="container">
-
-            <div class="carousel-caption text-right">
-                <h1>Математиката като предпочитано второ ДЗИ</h1>
-                <p>Ако и вие сте от зрелостниците насочили се към математиката, то това е най-подходящото място да
-                    започнете подготовката си.</p>
-                <p><a class="btn btn-lg btn-primary" href="/registrationForm" role="button">Регистриране</a></p>
+            <div class="carousel-caption text-left">
+                <h1>Добре дошли! Време е за математика!</h1>
             </div>
         </div>
-
     </div>
 
+    <div id="container-subjects">
+        <a id="add" href="/add"><img th:src="@{/images/addIcon.png}" width="40" height="40"/></a>
+
+        <div id="subj"></div>
+
+        <div id="tasksHardness" class="tab-content"></div>
+    </div>
     <div class="container marketing">
 
         <div class="row">
@@ -113,8 +119,7 @@
 
     <script th:src="@{/js/jquery.min.js}"></script>
     <script th:src="@{/js/logout.js}"></script>
-
-
+    <script th:src="@{/js/main.js}"></script>
 </main>
 </body>
 </html>

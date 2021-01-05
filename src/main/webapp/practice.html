@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -10,7 +10,8 @@
     <title>Математика за матура</title>
 
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/css/index.css}" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link th:href="@{/css/practice.css}" rel="stylesheet"/>
 </head>
 
 <body>
@@ -29,22 +30,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/index">Начало<span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/main">Дялове на математиката</a>
+                    <a class="nav-link" href="/index">Начало</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/main">Дялове на математиката<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/noSolutionTasks">Задачи без решения</a>
                 </li>
             </ul>
 
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0" id="signout">
                 <a class="nav-link user-p" href="#"></a>
-                <a class="nav-link" href="/loginForm"><img id="logout" th:src="@{/images/logoutIcon.png}" width="30" height="30"/>
-                    <img id="signin" th:src="@{/images/loginIcon.png}" width="30" height="30"/></a>
+                <a class="nav-link" href="/index"><img id="logout" th:src="@{/images/logoutIcon.png}"
+                                                       width="30"
+                                                       height="30"/></a>
             </form>
+
         </div>
 
     </nav>
@@ -53,20 +56,48 @@
 
 <main id="main" role="main">
 
-    <div class="carousel-item active" id="myCarousel">
+    <div id="container-subjects">
+        <form class="task-form">
+            <div id="task">
+                <h2 id="task-title"></h2>
 
-        <img th:src="@{/images/indexImage1.jpg}"/>
+                <div id="timer"><label id="minutes">00</label>:<label id="seconds">00</label></div>
 
-        <div class="container">
 
-            <div class="carousel-caption text-right">
-                <h1>Математиката като предпочитано второ ДЗИ</h1>
-                <p>Ако и вие сте от зрелостниците насочили се към математиката, то това е най-подходящото място да
-                    започнете подготовката си.</p>
-                <p><a class="btn btn-lg btn-primary" href="/registrationForm" role="button">Регистриране</a></p>
+                <pre id="task-content"></pre>
+                <pre id="checkAnswer">Отговорът Ви за задачата е: <span id="correctAnswer">верен</span><span
+                        id="wrongAnswer">грешен</span> <span id="tryAgain">Опитайте отново!</span></pre>
+                <hr/>
+                <pre id="usedTheory">Използвани теоретични познания:<select id="theoryOptions"></select></pre>
+
+                <pre id="checkTheory">Отговорът Ви за теорията е: <span id="correctTheory">верен</span><span
+                        id="wrongTheory">грешен</span></pre>
+
+                <pre id="helpTheory">Използвани теоретични познания: <span></span></pre>
+
+                <pre id="solution"></pre>
+                <pre id="task-value"></pre>
+
+                <div class="text-bottom text-left" id="help"><a role="button" class="btn btn-info btn-lg">Помощ<i
+                        class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+
+                <div class="text-bottom text-left" id="solve"><a role="button" class="btn btn-info btn-lg">Решение<i
+                        class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+
+                <div class="text-bottom text-right" id="check"><a onclick="result()" role="button"
+                                                                  class="btn btn-primary btn-lg">Предаване<i
+                        class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+
+                <div class="text-bottom text-right" id="submit"><a onclick="theory()" role="button"
+                                                                   class="btn btn-primary btn-lg">Теория<i
+                        class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+
+                <div class="text-bottom text-right" id="back"><a href="/main" role="button"
+                                                                 class="btn btn-primary btn-lg">Назад<i
+                        class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+
             </div>
-        </div>
-
+        </form>
     </div>
 
     <div class="container marketing">
@@ -112,8 +143,8 @@
     </footer>
 
     <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/practice.js}"></script>
     <script th:src="@{/js/logout.js}"></script>
-
 
 </main>
 </body>
