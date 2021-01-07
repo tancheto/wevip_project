@@ -14,7 +14,7 @@ $(document).ready(function () {
       alert("Всички полета трябва да се попълнят!");
     } else {
       var formData = {
-        name: username,
+        username: username,
         email: "",
         password: password
       };
@@ -25,7 +25,7 @@ $(document).ready(function () {
         url: "/user/loginForm",
         data: JSON.stringify(formData),
         success: function () {
-          sessionStorage.setItem("name", username);
+          sessionStorage.setItem("username", username);
           window.location.href = "/main";
         },
         error: function (jqXHR) {

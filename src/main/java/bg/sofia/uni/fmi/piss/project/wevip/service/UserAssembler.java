@@ -13,13 +13,10 @@ public class UserAssembler {
   @Autowired
   private PasswordEncoder passwordEncoder;
 
-  private static final String defaultRole = "ROLE_USER";
-
   WevipUser toUser(WevipUserDto userDto) {
-    return new WevipUser(userDto.getName(),
+    return new WevipUser(userDto.getUsername(),
             userDto.getEmail(),
-            passwordEncoder.encode(userDto.getPassword()),
-            defaultRole);
+            passwordEncoder.encode(userDto.getPassword()));
   }
 
   WevipUserDto toUserDto(WevipUser user) {

@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 public class WevipUserDto {
   private Long userId;
   @NotNull
-  private String name;
+  private String username;
   @NotNull
   private String email;
   @NotNull
@@ -20,12 +20,12 @@ public class WevipUserDto {
     this.userId = userId;
   }
 
-  public String getName() {
-    return name;
+  public String getUsername() {
+    return username;
   }
 
   public void setName(String name) {
-    this.name = name;
+    this.username = name;
   }
 
   public String getEmail() {

@@ -1,6 +1,11 @@
 package bg.sofia.uni.fmi.piss.project.wevip.model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table(name = "wevip_users")
@@ -19,17 +24,18 @@ public class WevipUser {
   @Column(name = "password", nullable = false)
   private String password;
 
-  @Transient
+  @Column(name = "role", nullable = false)
   private String role;
 
-  public WevipUser(String username, String email, String password, String role) {
+  public WevipUser(String username, String email, String password) {
     this.username = username;
     this.email = email;
     this.password = password;
-    this.role = role;
+    this.role = "ROLE_USER";
   }
 
   public WevipUser() {
+    this.role = "ROLE_USER";
   }
 
   public Long getId() {
@@ -70,6 +76,13 @@ public class WevipUser {
 
   public void setRole(String role) {
     this.role = role;
+  }
+
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+
+    Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+    authorities.add(new SimpleGrantedAuthority(this.role));
+    return authorities;
   }
 
   @Override

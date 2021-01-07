@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-  $(".user-p").text(sessionStorage.getItem('name'));
-  if (sessionStorage.getItem('name') !== null) {
+  $(".user-p").text(sessionStorage.getItem('username'));
+  if (sessionStorage.getItem('username') !== null) {
     $("#logout").show();
     $("#signin").css("display", "none");
   } else {

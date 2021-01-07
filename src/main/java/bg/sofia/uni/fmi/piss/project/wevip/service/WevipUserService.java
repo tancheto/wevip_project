@@ -38,7 +38,7 @@ public class WevipUserService implements UserService {
 
     @Override
     public ResponseEntity login(WevipUserDto userDto) {
-        WevipUser user = userRepository.findByUsername(userDto.getName());
+        WevipUser user = userRepository.findByUsername(userDto.getUsername());
         if (user == null) {
           return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }

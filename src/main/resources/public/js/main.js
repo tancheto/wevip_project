@@ -21,7 +21,7 @@ $(document).on('click', '.dropdown-item', function () {
   var partId = $(this).attr('value');
   getDifficulties(partId, target);
   $("#" + target).show().siblings("div").hide();
-  if (sessionStorage.getItem('name') === 'admin') {
+  if (sessionStorage.getItem('username') === 'admin') {
     $("#add").show();
   } else {
     $("#add").css("display", "none");
