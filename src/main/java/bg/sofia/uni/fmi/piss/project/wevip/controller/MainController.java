@@ -50,4 +50,9 @@ public class MainController {
   String approve() {
     return "approve";
   }
+
+  @GetMapping("/events")
+  String events() {
+    return "events";
+  }
 }
