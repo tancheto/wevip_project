@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,5 +19,15 @@ public class EventController {
     @PostMapping("/all")
     public ResponseEntity getEvents() {
         return eventService.getAllEvents();
+    }
+
+    @PostMapping("/top30")
+    public ResponseEntity getTop30Events() {
+        return eventService.getTop30Events();
+    }
+
+    @PostMapping("/{eventId}")
+    public ResponseEntity getEventById(@PathVariable long eventId) {
+        return eventService.getEventById(eventId);
     }
 }

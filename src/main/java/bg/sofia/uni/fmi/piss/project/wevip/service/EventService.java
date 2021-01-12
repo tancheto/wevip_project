@@ -8,4 +8,8 @@ import java.util.List;
 public interface EventService {
 
     ResponseEntity<List<EventDto>> getAllEvents();
+
+    ResponseEntity<List<EventDto>> getTop30Events();
+
+    ResponseEntity<EventDto> getEventById(long id);
 }

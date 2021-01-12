@@ -30,4 +30,26 @@ public class EventServiceImpl implements EventService{
         return new ResponseEntity<>(events.stream().map(event -> eventAssembler.toEventDto(event)).sorted(Comparator
                 .comparingLong(EventDto::getEventId)).collect(Collectors.toList()), HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<List<EventDto>> getTop30Events() {
+        List<Event> topEvents = eventRepository.findTop30SoldOut();
+        if (topEvents.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(topEvents.stream().map(event -> eventAssembler.toEventDto(event))
+                .collect(Collectors.toList()), HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<EventDto> getEventById(long id) {
+        Event event = eventRepository.findById(id);
+
+        if (event == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(eventAssembler.toEventDto(event), HttpStatus.OK);
+    }
 }

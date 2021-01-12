@@ -55,4 +55,9 @@ public class MainController {
   String events() {
     return "events";
   }
+
+  @GetMapping("/events/top30")
+  String eventsTop30() {
+    return "eventsTop30";
+  }
 }

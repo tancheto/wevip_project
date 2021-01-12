@@ -1,5 +1,18 @@
-<div onclick="getAllEvents()">
-    Events</div>
+<div onclick="getAllEvents()">Events</div>
+
+<div onclick="getTop30Events()">Top 30 Events</div>
+
+<div onclick="getEventById(784)">Get Event with id 784</div>
+<div onclick="getEventById(785)">Get Event with id 785</div>
+<div onclick="getEventById(786)">Get Event with id 786</div>
+
+<div onclick="getUpcomingEvents()">Upcoming Events</div>
+
+<div onclick="getCheapestEvents()">Cheapest Events</div>
+
+<div onclick="getEventTypes()">Event types</div>
+
+<div onclick="getEventByType('Seminars')">Seminars</div>
 
 <script th:src="@{/js/jquery.min.js}"></script>
-<script th:src="@{/js/events.js}"></script>
+<script defer th:src="@{/js/events.js}"></script>
