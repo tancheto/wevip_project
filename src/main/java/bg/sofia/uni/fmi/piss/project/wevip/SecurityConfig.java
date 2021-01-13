@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers("/registrationForm", "/theory/**", "/add", "/practice/**", "/css/**", "/images/**", "/js/**").permitAll()
             .antMatchers("/index", "/main", "/parts/", "/events/**" , "/tasks/**", "/difficulties/", "/loginForm").permitAll()
-            .antMatchers("/user/registrationForm", "/user/loginForm", "/noSolutionTasks/**", "/approve", "/offer").permitAll()
+            .antMatchers("/user/**",  "/noSolutionTasks/**", "/approve", "/offer").permitAll()
             .anyRequest().authenticated()
             .and()
             //wants to authenticate using a form

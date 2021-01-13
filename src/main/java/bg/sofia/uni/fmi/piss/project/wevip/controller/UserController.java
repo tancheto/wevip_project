@@ -4,15 +4,16 @@ import bg.sofia.uni.fmi.piss.project.wevip.dto.WevipUserDto;
 
 import javax.validation.Valid;
 
+import bg.sofia.uni.fmi.piss.project.wevip.model.Event;
+import bg.sofia.uni.fmi.piss.project.wevip.model.WevipUser;
 import bg.sofia.uni.fmi.piss.project.wevip.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 
 @Controller
 @RequestMapping(path = "/user", produces = "application/json", consumes = "application/json")
@@ -37,5 +38,10 @@ public class UserController {
     }
 
     return userService.login(userDto);
+  }
+
+  @PostMapping("/current/{username}")
+  public ResponseEntity<WevipUserDto> getCurrentUser(@PathVariable String username) {
+    return userService.getAuthUser(username);
   }
 }

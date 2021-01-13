@@ -9,5 +9,5 @@ public interface UserService {
 
   ResponseEntity login(WevipUserDto userDto);
 
-  WevipUser getAuthUser();
+  ResponseEntity<WevipUserDto> getAuthUser(String username);
 }
