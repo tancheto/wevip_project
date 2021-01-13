@@ -1,6 +1,7 @@
 package bg.sofia.uni.fmi.piss.project.wevip.service;
 
 import bg.sofia.uni.fmi.piss.project.wevip.dto.EventDto;
+import bg.sofia.uni.fmi.piss.project.wevip.dto.ImageDto;
 import bg.sofia.uni.fmi.piss.project.wevip.model.Event;
 import bg.sofia.uni.fmi.piss.project.wevip.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -51,5 +53,24 @@ public class EventServiceImpl implements EventService{
         }
 
         return new ResponseEntity<>(eventAssembler.toEventDto(event), HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity getPoster(long eventId) {
+
+        Event event = eventRepository.findById(eventId);
+//        String location = "C:\\Users\\Tanya\\Desktop\\TANYA\\Pics\\love_family.jpg";
+        String location = event.getPosterLocation();
+
+        ImageDto image = null;
+
+        try {
+            image = new ImageDto(location);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return new ResponseEntity<>(image , HttpStatus.OK);
     }
 }

@@ -91,3 +91,20 @@ function getEventById(id) {
         }
     });
 }
+
+function getEventPosterById(id) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/events/poster/" + id,
+        success: function(response) {
+            console.log(response);
+            var image = new Image();
+            image.src = 'data:image/jpg;base64,' + response.encodedImage;
+            document.body.appendChild(image);
+        },
+        error: function(e) {
+            console.log("ERROR: ", e);
+        }
+    });
+}
