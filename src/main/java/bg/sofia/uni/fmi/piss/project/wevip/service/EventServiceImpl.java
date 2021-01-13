@@ -59,7 +59,6 @@ public class EventServiceImpl implements EventService{
     public ResponseEntity getPoster(long eventId) {
 
         Event event = eventRepository.findById(eventId);
-//        String location = "C:\\Users\\Tanya\\Desktop\\TANYA\\Pics\\love_family.jpg";
         String location = event.getPosterLocation();
 
         ImageDto image = null;
