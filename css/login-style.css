@@ -32,6 +32,15 @@
 	min-height:100vh;
 	overflow:hidden;
 }
+#register-section{
+	position: relative;
+	display: flex;
+	align-items: center;
+    display: flex;
+    flex-direction: column;
+	min-height:180vh;
+	overflow:hidden;
+}
 .btn{
 	border: none;
 	background-color: var(--red-light);

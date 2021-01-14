@@ -40,28 +40,9 @@ document.addEventListener("DOMContentLoaded", function(event){
 			eventDiv.appendChild(eventPrice);
 
 			eventA.appendChild(eventDiv);
-	
-			// let button = document.createElement('button');
-			// button.innerHTML="PLAY NOW"
-			// button.className="btn-play";
-			// button.onclick = function(){location.href="event-screen.html";};
-			// gameDiv.appendChild(button);
-	
 			container.appendChild(eventA);
 		};
 	};
 
 	makeRows(6,4);
-	loadEvents();
 });
-
-function loadEvents() {
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-	//   if (this.readyState == 4 && this.status == 200) {
-	// 	console.log(this.responseText);
-	  //}
-	};
-	xhttp.open("GET", "https://www.google.com");
-	xhttp.send();
-  }
