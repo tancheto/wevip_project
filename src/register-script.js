@@ -57,7 +57,7 @@ function validate()
 	errorFields[3] = cardNumberRegex.test(cardNumber);
 
 	const expiryDateRegex = /^(0[1-9]|1[0-2])\/([0-9]{4}|[0-9]{2})$/;
-	errorFields[4] = cardNumberRegex.test(expiryDate);
+	errorFields[4] = expiryDateRegex.test(expiryDate);
 
 	errorFields[5] = cvvRegex.test(cvv);
 
