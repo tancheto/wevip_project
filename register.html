@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <link href="css/style.css" rel="stylesheet">
+      <link href="css/login-style.css" rel="stylesheet">
+      <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+      <script src="https://kit.fontawesome.com/0b4303f61f.js" crossorigin="anonymous"></script>
+	  <script src="src/login-script.js" type="text/javascript"></script> 
+	  <script src="src/register-script.js" type="text/javascript"></script> 
+      <title>Register</title>
+   </head>
+   <body>
+      <div id="content">
+         <header>
+			<img src="img/logo.png" id="logo" alt="logo" onclick="location.href='index.html'">
+		<button type="button" id="login-header" class="text-button" onclick="location.href='login.html'">Login</button>
+         </header>
+         <section id="login-section">
+            <div id="wrapper-popup">
+				<div id="wrapper" class="extended">
+				<div id="registration-steps">
+					<h1>Register</h1>
+				</div>
+					<div class="form-group field">
+						<input type="text" class="form-field" id="name" name="name" placeholder="Username" required>
+						<label for="name" class="form-label">Username</label> 
+					</div>
+					<!-- <p class="error">Invalid username</p> -->
+
+					<div class="form-group field">
+						<input type="email" class="form-field" id="email" name="email" placeholder="Email" required>
+						<label for="email" class="form-label">Email</label> 
+					</div>
+					<p class="error">Invalid email</p>
+
+					<div class="form-group field">
+						<input type="password" class="form-field" id="password" placeholder="Password" name="password">
+						<label for="password"  class="form-label">Password</label>
+					</div>
+				
+					<div class="form-group field">
+							<input type="password" class="form-field" id="repeatPassword" placeholder="Confirm Password" name="repeatPassword">
+							<label for="repeatPassword" class="form-label">Confirm Password</label>
+					</div>
+					<p class="error">Passwords do not match</p>
+				
+						<h2>Credit card details</h2>
+						<div class="dropdown-bar">
+							<div class="dropdown-content">
+								 <label></label> 
+								<ul>
+									<li><a href="#" id="selected_card" class="activeli">Visa<i class="fa fa-angle-down"></i></a>
+										<ul>
+											<li><a href="#" id="card_1" onClick="setCurrentCreditCard(this.id)">MasterCard</a></li>
+											<li><a href="#" id="card_2" onClick="setCurrentCreditCard(this.id)">AmericanExpress</a><li>
+											<li><a href="#" id="card_3" onClick="setCurrentCreditCard(this.id)">Diners Club</a><li></li>
+											</li>
+										</ul>
+									</li>
+									</ul>
+							</div>
+						</div>
+
+						<div class="form-group field">
+							<input type="text" class="form-field" id="name-on-card" name="name-on-card" placeholder="Name on card" required>
+							<label for="name-on-card" class="form-label">Name on card</label> 
+						</div>
+						<p class="error">Invalid name.Please provide first and last name.</p>
+
+						<div class="form-group field">
+							<input type="text" class="form-field" id="card-number" name="card-number" placeholder="Card number" required>
+							<label for="card-number" class="form-label">Card number</label> 
+						</div>
+						<p class="error">Invalid card number. Verify you have selected the correct credit card type.</p>
+
+						<div class="form-group field">
+							<input type="text" class="form-field" id="expiry-date" name="expiry-date" placeholder="Expiry date" required>
+							<label for="expiry-date" class="form-label">Expiry date</label> 
+						</div>
+						<p class="error">Invalid expiry date</p>
+
+						<div class="form-group field">
+							<input type="text" class="form-field" id="security-code" name="security-code" placeholder="CVV code" required>
+							<label for="security-code" class="form-label">CVV code</label> 
+						</div>
+						<p class="error">Invalid CVV code</p>
+				
+                  <div id="buttons">
+                     <button type="submit" id="register" value="register" class="btn" onclick="validate()">Register</button>
+                     <button type="button" class="text-button" id="signup" onclick="location.href='login.html'">Already a member? Login</button>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </div>
+      <footer>
+         <button class="text-button">About us</button>
+         <button class="text-button">Team</button>
+         <button class="text-button">Terms of use</button>
+         <button class="text-button">Give feedback</button>
+         <button class="text-button">Test connection</button>
+         <button class="text-button">Help</button>
+         <button class="text-button">Contact us</button>
+      </footer>
+   </body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/all-events-style.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/0b4303f61f.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="src/all-events-script.js"></script>
+	<title>Events</title>
+</head>
+<body>
+	<div id="content">
+	<header>
+		<a href="#"><img src="img/logo.png" id="logo" alt="logo" onclick="location.href='index.html'"></a>
+		<nav id="nav-bar">
+			<ul>
+			<li><a href="#">Events</a>
+				<ul>
+                    <li><a href="all-events.html">Top 30</a></li>
+                    <li><a href="all-events.html">All events</a></li>
+				</ul>
+			</li>
+			<li><a href="user-profile.html">My collection</a></li>
+			<li><a href="users.html">Users</a></li>
+			<li id="account-button"><a href="#">
+					<img src="img/woman.png" alt="My Profile">
+					<label>vixypixy</label>
+					<i class="fa fa-angle-down"></i>
+				</a>
+			<ul>
+				<li><a href="settings.html">My profile</a></li>
+			</ul>
+			</li>
+		</ul>
+	</nav>
+	</header>
+	<section id="login-section">
+	<div id="outer-wrapper">
+		<div id="wrapper">
+			<div class="filters">
+				<div class="dropdown-bar">
+					<div class="dropdown-content">
+						 <label></label> 
+						<ul>
+							<li><a href="#" id="selected_time" class="activeli">Filter by:</a>
+							</li>
+							</ul>
+					</div>
+				</div>
+				<div class="dropdown-bar">
+					<div class="dropdown-content">
+						 <label></label> 
+						<ul>
+							<li><a href="#" id="selected_time" class="activeli">Time<i class="fa fa-angle-down"></i></a>
+								<ul>
+									<li><a href="#" id="time_1" onClick="setCurrentCreditCard(this.id)">Most recent</a></li>
+									<li><a href="#" id="time_2" onClick="setCurrentCreditCard(this.id)">Least recent</a><li>
+									</li>
+								</ul>
+							</li>
+							</ul>
+					</div>
+				</div>
+				<div class="dropdown-bar">
+					<div class="dropdown-content">
+						 <label></label> 
+						<ul>
+							<li><a href="#" id="selected_price" class="activeli">Price<i class="fa fa-angle-down"></i></a>
+								<ul>
+									<li><a href="#" id="price_1" onClick="setCurrentCreditCard(this.id)">Lowest to highest</a></li>
+									<li><a href="#" id="price_2" onClick="setCurrentCreditCard(this.id)">Highest to lowest</a><li>
+									</li>
+								</ul>
+							</li>
+							</ul>
+					</div>
+				</div>
+				<div class="dropdown-bar">
+					<div class="dropdown-content">
+						 <label></label> 
+						<ul>
+							<li><a href="#" id="selected_time" class="activeli">Category<i class="fa fa-angle-down"></i></a>
+								<ul>
+									<li><a href="#" id="category_1" onClick="setCurrentCreditCard(this.id)">Tech event</a></li>
+									<li><a href="#" id="category_2" onClick="setCurrentCreditCard(this.id)">Seminars</a><li>
+										<li><a href="#" id="category_2" onClick="setCurrentCreditCard(this.id)">Concert</a><li></li>
+										<li><a href="#" id="category_2" onClick="setCurrentCreditCard(this.id)">Music Festival</a><li>
+									</li>
+								</ul>
+							</li>
+							</ul>
+					</div>
+				</div>
+			</div>
+			<div class="category">
+  			<h1>Top Events</h1>
+  			<div id="events-container">
+  			</div>
+		</div>
+		</div>
+		</div>
+	</section>
+</div>
+	<footer>
+		<button class="text-button">About us</button>
+		<button class="text-button">Team</button>
+		<button class="text-button">Terms of use</button>
+		<button class="text-button">Give feedback</button>
+		<button class="text-button">Test connection</button>
+		<button class="text-button">Help</button>
+		<button class="text-button">Contact us</button>
+	</footer>
+</body>
+</html>

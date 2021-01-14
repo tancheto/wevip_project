@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/settings-style.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/0b4303f61f.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="src/settings-script.js"></script>
+	<title>Settings</title>
+</head>
+<body>
+	<div id="content">
+	<header>
+		<a href="#"><img src="img/logo.png" id="logo" alt="logo" onclick="location.href='index.html'"></a>
+		<nav id="nav-bar">
+			<ul>
+			<li><a href="#">Events</a>
+				<ul>
+                    <li><a href="all-events.html">Top 30</a></li>
+                    <li><a href="all-events.html">All events</a></li>
+				</ul>
+			</li>
+			<li><a href="user-profile.html">My collection</a></li>
+			<li><a href="users.html">Users</a></li>
+			<li id="account-button"><a href="#">
+					<img src="img/woman.png" alt="My Profile">
+					<label>vixypixy</label>
+					<i class="fa fa-angle-down"></i>
+				</a>
+			<ul>
+				<li><a href="settings.html">My profile</a></li>
+			</ul>
+			</li>
+		</ul>
+	</nav>
+	</header>
+	<section id="settings-section">
+		<div id="main-section-div">
+		<section>
+			<div id="general-info-section">
+				<h1>My profile</h1>
+				<div id="upload">
+					<label for="dataFile" class="custom-upload" id="uploadLabel"><i class="fa fa-cloud-upload fa-3x" aria-hidden="true"></i><br>Upload photo</label>
+					<input type="file" id="dataFile" name="dataFile" accept=".csv" required />
+					<p id="upload-error"></p>
+				</div>
+				<h2 id="username">Username:</h2>
+				<h2 id="email">Email:</h2>
+				</div>
+				<button id="saveBtn" onclick="ShowSaveConfirmation()">Save</button>
+		<p id="save-info-message">Changes saved successfully!</p>
+	</section>
+	</div>
+	</section>
+</div>
+	<footer>
+		<button class="text-button">About us</button>
+		<button class="text-button">Team</button>
+		<button class="text-button">Contact us</button>
+	</footer>
+</body>
+</html>
