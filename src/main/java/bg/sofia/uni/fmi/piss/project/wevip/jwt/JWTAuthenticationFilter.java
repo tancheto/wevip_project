@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Date;
 
-import static bg.sofia.uni.fmi.piss.project.wevip.jwt.SecurityConstants.*;
+import static bg.sofia.uni.fmi.piss.project.wevip.SecurityConstants.*;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 

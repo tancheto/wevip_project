@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import bg.sofia.uni.fmi.piss.project.wevip.model.Event;
 import bg.sofia.uni.fmi.piss.project.wevip.model.WevipUser;
+import bg.sofia.uni.fmi.piss.project.wevip.service.UserService;
 import bg.sofia.uni.fmi.piss.project.wevip.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
   @Autowired
-  private UserServiceImpl userService;
+  private UserService userService;
 
   @PostMapping("/registrationForm")
   public ResponseEntity<WevipUserDto> processRegisterUser(@Valid @RequestBody WevipUserDto userDto, BindingResult binding) {
@@ -43,5 +44,10 @@ public class UserController {
   @PostMapping("/current/{username}")
   public ResponseEntity<WevipUserDto> getCurrentUser(@PathVariable String username) {
     return userService.getAuthUser(username);
+  }
+
+  @PostMapping("/current/profile-pic/{username}")
+  public ResponseEntity getCurrentUserProfilePic(@PathVariable String username) {
+    return userService.getAuthUserProfilePic(username);
   }
 }

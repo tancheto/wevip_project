@@ -1,28 +1,22 @@
 package bg.sofia.uni.fmi.piss.project.wevip.service;
 
+import bg.sofia.uni.fmi.piss.project.wevip.dto.ImageDto;
 import bg.sofia.uni.fmi.piss.project.wevip.dto.WevipUserDto;
-import bg.sofia.uni.fmi.piss.project.wevip.model.Event;
 import bg.sofia.uni.fmi.piss.project.wevip.model.WevipUser;
 import bg.sofia.uni.fmi.piss.project.wevip.repository.WevipUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.stream.Collectors;
 
-import static bg.sofia.uni.fmi.piss.project.wevip.jwt.SecurityConstants.USER_DIR;
+import static bg.sofia.uni.fmi.piss.project.wevip.SecurityConstants.USER_DIR;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -38,7 +32,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseEntity<WevipUserDto> register(WevipUserDto userDto) {
-        WevipUser existingUser = userRepository.findByUsername(userDto.getEmail());
+        WevipUser existingUser = userRepository.findByUsername(userDto.getUsername());
         if (existingUser != null) {
           return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
@@ -78,6 +72,21 @@ public class UserServiceImpl implements UserService {
         }
 
         return new ResponseEntity<>(userAssembler.toUserDto(user), HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity getAuthUserProfilePic(String username) {
+
+        ImageDto image = null;
+
+        try {
+            image = new ImageDto(USER_DIR + username + File.separator + "profile_pic.jpg");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return new ResponseEntity<>(image , HttpStatus.OK);
     }
 }
 

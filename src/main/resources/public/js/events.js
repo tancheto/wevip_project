@@ -112,3 +112,62 @@ function getEventPosterById(id) {
 function onFileUploadSubmit() {
     document.getElementById("username").value = sessionStorage.getItem('username');
 }
+
+function getCurrentUser() {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/user/current/" + sessionStorage.getItem('username'),
+        success: function(user) {
+            console.log(user);
+        },
+        error: function(e) {
+            console.log("ERROR: ", e);
+        }
+    });
+}
+
+function getCurrentUserProfilePic() {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/user/current/profile-pic/" + sessionStorage.getItem('username'),
+        success: function(response) {
+            console.log(response);
+            var image = new Image();
+            image.src = 'data:image/jpg;base64,' + response.encodedImage;
+            document.body.appendChild(image);
+        },
+        error: function(e) {
+            console.log("ERROR: ", e);
+        }
+    });
+}
+
+function getEventOrganizers(id) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/events/organizers/" + id,
+        success: function(organizers) {
+            console.log(organizers);
+        },
+        error: function(e) {
+            console.log("ERROR: ", e);
+        }
+    });
+}
+
+function getEventPerformers(id) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/events/performers/" + id,
+        success: function(performers) {
+            console.log(performers);
+        },
+        error: function(e) {
+            console.log("ERROR: ", e);
+        }
+    });
+}

@@ -23,9 +23,17 @@
 
     <div onclick="getEventByType('Seminars')">Seminars</div>
 
-    <div onclick="getEventPosterById(1238)">Poster 1238</div>
+    <div onclick="getEventPosterById(1238)">Poster Event 1238</div>
 
-    <h4>Upload Single File:</h4>
+    <div onclick="getEventOrganizers(1240)">Organizers Event 1240</div>
+
+    <div onclick="getEventPerformers(1240)">Performers Event 1240</div>
+
+    <a onclick="getCurrentUser()" href="#">Get current user details</a>
+
+    <a onclick="getCurrentUserProfilePic()" href="#">Get current user profile pic</a>
+
+    <h4>Upload Profile Picture:</h4>
     <form method="POST" th:action="@{/file/upload}" enctype="multipart/form-data" onsubmit="onFileUploadSubmit()">
         <label for="img">Select image:</label>
         <input type="file" id="img" name="img" accept="image/*">

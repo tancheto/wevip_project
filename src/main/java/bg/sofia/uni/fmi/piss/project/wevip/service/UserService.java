@@ -10,4 +10,6 @@ public interface UserService {
   ResponseEntity login(WevipUserDto userDto);
 
   ResponseEntity<WevipUserDto> getAuthUser(String username);
+
+  ResponseEntity getAuthUserProfilePic(String username);
 }

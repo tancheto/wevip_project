@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static bg.sofia.uni.fmi.piss.project.wevip.jwt.SecurityConstants.*;
+import static bg.sofia.uni.fmi.piss.project.wevip.SecurityConstants.*;
 
 public class JWTTokenVerifier extends OncePerRequestFilter {
 

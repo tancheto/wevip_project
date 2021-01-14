@@ -17,4 +17,8 @@ public interface EventService {
     ResponseEntity<EventDto> getEventById(long id);
 
     ResponseEntity getPoster(@PathVariable long eventId);
+
+    ResponseEntity getEventOrganizersById(long eventId);
+
+    ResponseEntity getEventPerformersById(long eventId);
 }

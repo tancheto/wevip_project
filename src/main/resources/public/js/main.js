@@ -120,17 +120,3 @@ function getTasks(partId, difficultyId, name) {
         }
     });
 }
-
-function getCurrentUser() {
-    $.ajax({
-        type: "POST",
-        contentType: "application/json",
-        url: "/user/current/" + sessionStorage.getItem('username'),
-        success: function(user) {
-            console.log(user);
-        },
-        error: function(e) {
-            console.log("ERROR: ", e);
-        }
-    });
-}

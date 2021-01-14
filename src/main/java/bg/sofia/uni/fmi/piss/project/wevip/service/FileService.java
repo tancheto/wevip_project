@@ -1,8 +1,6 @@
 package bg.sofia.uni.fmi.piss.project.wevip.service;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -12,7 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-import static bg.sofia.uni.fmi.piss.project.wevip.jwt.SecurityConstants.USER_DIR;
+import static bg.sofia.uni.fmi.piss.project.wevip.SecurityConstants.USER_DIR;
 
 @Service
 public class FileService {
