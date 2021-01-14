@@ -1,21 +1,38 @@
-<div onclick="getAllEvents()">Events</div>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 
-<div onclick="getTop30Events()">Top 30 Events</div>
+<head>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script defer th:src="@{/js/events.js}"></script>
+</head>
 
-<div onclick="getEventById(1238)">Get Event with id 1238</div>
-<div onclick="getEventById(1239)">Get Event with id 1239</div>
-<div onclick="getEventById(1240)">Get Event with id 1240</div>
+<body>
+    <div onclick="getAllEvents()">Events</div>
 
-<div onclick="getUpcomingEvents()">Upcoming Events</div>
+    <div onclick="getTop30Events()">Top 30 Events</div>
 
-<div onclick="getCheapestEvents()">Cheapest Events</div>
+    <div onclick="getEventById(1238)">Get Event with id 1238</div>
+    <div onclick="getEventById(1239)">Get Event with id 1239</div>
+    <div onclick="getEventById(1240)">Get Event with id 1240</div>
 
-<div onclick="getEventTypes()">Event types</div>
+    <div onclick="getUpcomingEvents()">Upcoming Events</div>
 
-<div onclick="getEventByType('Seminars')">Seminars</div>
+    <div onclick="getCheapestEvents()">Cheapest Events</div>
 
-<div onclick="getEventPosterById(1238)">Poster 1238</div>
-<td></td>
+    <div onclick="getEventTypes()">Event types</div>
 
-<script th:src="@{/js/jquery.min.js}"></script>
-<script defer th:src="@{/js/events.js}"></script>
+    <div onclick="getEventByType('Seminars')">Seminars</div>
+
+    <div onclick="getEventPosterById(1238)">Poster 1238</div>
+
+    <h4>Upload Single File:</h4>
+    <form method="POST" th:action="@{/file/upload}" enctype="multipart/form-data" onsubmit="onFileUploadSubmit()">
+        <label for="img">Select image:</label>
+        <input type="file" id="img" name="img" accept="image/*">
+        <input type="hidden" id="username" value="" name="username">
+        <input type="submit">
+    </form>
+
+</body>
+
+</html>

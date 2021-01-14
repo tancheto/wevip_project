@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @Component
 @Configuration
@@ -40,9 +41,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .addFilter(new JWTAuthenticationFilter(authenticationManager()))
             .addFilterAfter(new JWTTokenVerifier(), JWTAuthenticationFilter.class )
             .authorizeRequests()
-            .antMatchers("/registrationForm", "/theory/**", "/add", "/practice/**", "/css/**", "/images/**", "/js/**").permitAll()
-            .antMatchers("/index", "/main", "/parts/", "/events/**" , "/tasks/**", "/difficulties/", "/loginForm").permitAll()
-            .antMatchers("/user/**",  "/noSolutionTasks/**", "/approve", "/offer").permitAll()
+            .antMatchers("/registrationForm", "/css/**", "/images/**", "/js/**").permitAll()
+            .antMatchers("/index", "/main", "/events/**" ,   "/loginForm").permitAll()
+            .antMatchers("/user/**", "/file/**").permitAll()
             .anyRequest().authenticated()
             .and()
             //wants to authenticate using a form
@@ -57,5 +58,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .httpBasic()
             .and()
             .csrf().disable();
+  }
+
+  @Bean(name = "multipartResolver")
+  public CommonsMultipartResolver multipartResolver() {
+    CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+    multipartResolver.setMaxUploadSize(200000);
+    return multipartResolver;
   }
 }

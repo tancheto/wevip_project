@@ -108,3 +108,7 @@ function getEventPosterById(id) {
         }
     });
 }
+
+function onFileUploadSubmit() {
+    document.getElementById("username").value = sessionStorage.getItem('username');
+}

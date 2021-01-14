@@ -15,8 +15,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static bg.sofia.uni.fmi.piss.project.wevip.jwt.SecurityConstants.USER_DIR;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -39,6 +45,16 @@ public class UserServiceImpl implements UserService {
 
         WevipUser user = userAssembler.toUser(userDto);
         userRepository.save(user);
+
+        try {
+
+            Path path = Paths.get(USER_DIR + user.getUsername());
+            Files.createDirectories(path);
+            System.out.println("Directory is created!");
+
+        } catch (IOException e) {
+            System.err.println("Failed to create directory!" + e.getMessage());
+        }
 
         return new ResponseEntity<>(userAssembler.toUserDto(user), HttpStatus.CREATED);
     }
