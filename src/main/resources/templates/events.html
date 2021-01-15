@@ -4,6 +4,7 @@
 <head>
     <script th:src="@{/js/jquery.min.js}"></script>
     <script defer th:src="@{/js/events.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha512-YUkaLm+KJ5lQXDBdqBqk7EVhJAdxRnVdT2vtCzwPHSweCzyMgYV/tgGF4/dCyqtCC2eCphz0lRQgatGVdfR0ww==" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -34,7 +35,7 @@
     <a onclick="getCurrentUserProfilePic()" href="#">Get current user profile pic</a>
 
     <h4>Upload Profile Picture:</h4>
-    <form method="POST" th:action="@{/file/upload}" enctype="multipart/form-data" onsubmit="onFileUploadSubmit()">
+    <form id="profile_pic_upload" enctype="multipart/form-data" onsubmit="onFileUploadSubmit()">
         <label for="img">Select image:</label>
         <input type="file" id="img" name="img" accept="image/*">
         <input type="hidden" id="username" value="" name="username">

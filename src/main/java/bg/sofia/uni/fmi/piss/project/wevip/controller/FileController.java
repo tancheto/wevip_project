@@ -2,6 +2,7 @@ package bg.sofia.uni.fmi.piss.project.wevip.controller;
 
 import bg.sofia.uni.fmi.piss.project.wevip.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,15 +18,9 @@ public class FileController {
     FileService fileService;
 
     @PostMapping("/upload")
-    public String uploadFile(@RequestParam("img") MultipartFile file,
-                             @RequestParam("username") String username,
-                             RedirectAttributes redirectAttributes) {
+    public ResponseEntity uploadFile(@RequestParam("img") MultipartFile file,
+                                     @RequestParam("username") String username) {
 
-        fileService.uploadFile(file, username);
-
-        redirectAttributes.addFlashAttribute("message",
-                "You successfully uploaded " + file.getOriginalFilename() + "!");
-
-        return "redirect:/";
+        return fileService.uploadFile(file, username);
     }
 }

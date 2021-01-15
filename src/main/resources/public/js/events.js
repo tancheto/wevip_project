@@ -113,6 +113,15 @@ function onFileUploadSubmit() {
     document.getElementById("username").value = sessionStorage.getItem('username');
 }
 
+$('#profile_pic_upload')
+    .ajaxForm({
+        url: '/file/upload',
+        type: "POST",
+        success: function(response) {
+            alert("The server says: " + response);
+        }
+    });
+
 function getCurrentUser() {
     $.ajax({
         type: "POST",
