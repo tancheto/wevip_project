@@ -53,7 +53,6 @@ public class EventServiceImpl implements EventService{
         return new ResponseEntity<>(events
                 .stream()
                 .map(event -> eventAssembler.toEventDto(event))
-                .sorted(Comparator.comparingLong(EventDto::getEventId))
                 .collect(Collectors.toList()), HttpStatus.OK);
     }
 
@@ -94,6 +93,12 @@ public class EventServiceImpl implements EventService{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
+        for (Organizer org : organizers){
+            if (org == null){
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
         return new ResponseEntity<>(organizers
                 .stream()
                 .map(organizer -> organizerAssembler.toOrganizerDto(organizer))
@@ -113,6 +118,11 @@ public class EventServiceImpl implements EventService{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
+        for (Performer perf : performers){
+            if (perf == null){
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
 
         return new ResponseEntity<>(performers
                 .stream()
@@ -124,6 +134,11 @@ public class EventServiceImpl implements EventService{
     public ResponseEntity getPoster(long eventId) {
 
         Event event = eventRepository.findById(eventId);
+
+        if (event == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
         String location = event.getPosterLocation();
 
         ImageDto image = null;
@@ -137,4 +152,5 @@ public class EventServiceImpl implements EventService{
 
         return new ResponseEntity<>(image , HttpStatus.OK);
     }
+
 }

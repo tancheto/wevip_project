@@ -25,9 +25,6 @@ public class UserServiceImpl implements UserService {
     private WevipUserRepository userRepository;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
     private UserAssembler userAssembler;
 
     @Override
@@ -37,9 +34,8 @@ public class UserServiceImpl implements UserService {
           return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 
-        WevipUser user = userAssembler.toUser(userDto);
-        userRepository.save(user);
 
+        WevipUser user = userAssembler.toUser(userDto);
         try {
 
             Path path = Paths.get(USER_DIR + user.getUsername());
@@ -48,8 +44,10 @@ public class UserServiceImpl implements UserService {
 
         } catch (IOException e) {
             System.err.println("Failed to create directory!" + e.getMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
+        userRepository.save(user);
         return new ResponseEntity<>(userAssembler.toUserDto(user), HttpStatus.CREATED);
     }
 
@@ -74,6 +72,7 @@ public class UserServiceImpl implements UserService {
         return new ResponseEntity<>(userAssembler.toUserDto(user), HttpStatus.OK);
     }
 
+    //TODO: fix it - isnt testable
     @Override
     public ResponseEntity getAuthUserProfilePic(String username) {
 

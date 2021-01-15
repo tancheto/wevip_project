@@ -68,14 +68,13 @@ public class EventServiceImplTest {
     public void getAllEvents_EventsFound(){
         EventDto dto = new EventDto();
         dto.setEventId(1L);
-        EventDto dto2 = new EventDto();
-        dto2.setEventId(2L);
-        Mockito.when(eventRepository.findAll()).thenReturn(Arrays.asList(new Event(),new Event()));
-        Mockito.when(eventAssembler.toEventDto(Mockito.any())).thenReturn(dto2,dto);
+
+        Mockito.when(eventRepository.findAll()).thenReturn(Arrays.asList(new Event()));
+        Mockito.when(eventAssembler.toEventDto(Mockito.any())).thenReturn(dto);
 
         ResponseEntity<List<EventDto>> result = eventService.getAllEvents();
         assertEquals(HttpStatus.OK,result.getStatusCode());
-        assertEquals(Arrays.asList(dto,dto2),result.getBody());
+        assertEquals(Arrays.asList(dto),result.getBody());
     }
 
     @Test
@@ -138,7 +137,7 @@ public class EventServiceImplTest {
         ResponseEntity result = eventService.getEventOrganizersById(1);
         Mockito.verify(organizerAssembler,Mockito.never()).toOrganizerDto(Mockito.any());
 
-        assertEquals(HttpStatus.NOT_FOUND,result.getStatusCode());
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR,result.getStatusCode());
         assertNull(result.getBody());
     }
 
@@ -184,7 +183,7 @@ public class EventServiceImplTest {
         ResponseEntity result = eventService.getEventPerformersById(1);
         Mockito.verify(performerAssembler,Mockito.never()).toPerformerDto(Mockito.any());
 
-        assertEquals(HttpStatus.NOT_FOUND,result.getStatusCode());
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR,result.getStatusCode());
         assertNull(result.getBody());
     }
 
