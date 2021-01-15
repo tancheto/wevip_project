@@ -113,6 +113,7 @@ public class EventServiceImpl implements EventService{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
+
         return new ResponseEntity<>(performers
                 .stream()
                 .map(performer -> performerAssembler.toPerformerDto(performer))
