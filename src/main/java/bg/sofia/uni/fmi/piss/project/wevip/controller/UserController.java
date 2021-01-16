@@ -50,4 +50,9 @@ public class UserController {
   public ResponseEntity getCurrentUserProfilePic(@PathVariable String username) {
     return userService.getAuthUserProfilePic(username);
   }
+
+  @PostMapping("/all")
+  public ResponseEntity getAllUsers() {
+    return userService.getAllUsers();
+  }
 }
