@@ -12,4 +12,6 @@ public interface UserService {
   ResponseEntity<WevipUserDto> getAuthUser(String username);
 
   ResponseEntity getAuthUserProfilePic(String username);
+
+  ResponseEntity getAllUsers();
 }

@@ -42,8 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .addFilterAfter(new JWTTokenVerifier(), JWTAuthenticationFilter.class )
             .authorizeRequests()
             .antMatchers("/registrationForm", "/css/**", "/images/**", "/js/**").permitAll()
-            .antMatchers("/index", "/main", "/events/**" ,   "/loginForm").permitAll()
-            .antMatchers("/user/**", "/file/**").permitAll()
+            .antMatchers("/index", "/main", "/events/**" ,"/settings", "/loginForm").permitAll()
+            .antMatchers("/user/**", "/userProfile", "/users", "/file/**").permitAll()
             .anyRequest().authenticated()
             .and()
             //wants to authenticate using a form
