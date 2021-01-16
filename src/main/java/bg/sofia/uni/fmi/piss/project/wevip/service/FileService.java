@@ -65,12 +65,12 @@ public class FileService {
 			
 			InputStream ois = socket.getInputStream();
 			InputStreamReader reader = new InputStreamReader(ois);
-			int message = reader.read();
+			Integer message = reader.read();
 
 			ois.close();
 			oos.close();
 
-			return message == 1;
+			return message.equals(1);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return true;
