@@ -21,25 +21,31 @@ public class FileService {
 
     public ResponseEntity uploadFile(MultipartFile file, String username) {
 
-		String uploadDir = USER_DIR + username;
-
 		try {
-			Path copyLocation = Paths
-					.get(uploadDir + File.separator + "profile_pic.jpg");
+			// Create a tmp file to validate before moving in it to the system
+			File tempFile = File.createTempFile("tmp_file", ".png");
+			Path tempLocation = Paths.get(tempFile.getAbsolutePath());
 
-			Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
+			Files.copy(file.getInputStream(), tempLocation, StandardCopyOption.REPLACE_EXISTING);
 
-			TimeUnit.SECONDS.sleep(1);
-
-			if (checkFileForNudity(copyLocation.toString())) {
+			if (checkFileForNudity(tempFile.getAbsolutePath())) {
 				// delete the nude pic
-				File nudePic = new File(copyLocation.toString());
-				nudePic.delete();
+				tempFile.delete();
 
 				return new ResponseEntity<>("You sent a picture with inappropriate content!",
 						HttpStatus.FORBIDDEN);
 			}
-		} catch (IOException | InterruptedException e) {
+
+			String uploadDir = USER_DIR + username;
+
+			Path copyLocation = Paths.get(uploadDir + File.separator + "profile_pic.jpg");
+
+			Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
+
+			//delete the temporary file since it's already saved in the system
+			tempFile.delete();
+
+		} catch (IOException e) {
 			e.printStackTrace();
 			return new ResponseEntity<>("There was an error processing your picture. Please upload it again.",
 					HttpStatus.INTERNAL_SERVER_ERROR);
@@ -50,6 +56,7 @@ public class FileService {
     }
  
 	public boolean checkFileForNudity(String absolutePathToFile) {
+
 		try {	
 			Socket socket = new Socket("localhost", 5678);		
 			OutputStream oos = socket.getOutputStream();
