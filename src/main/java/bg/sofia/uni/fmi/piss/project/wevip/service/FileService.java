@@ -70,6 +70,7 @@ public class FileService {
 			ois.close();
 			oos.close();
 
+			// ascii code for '1' character is 49
 			return message.equals(49);
 		} catch (Exception e) {
 			e.printStackTrace();
