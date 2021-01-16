@@ -1,112 +1,47 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+      <script src="https://kit.fontawesome.com/0b4303f61f.js" crossorigin="anonymous"></script>
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="FMI - project" />
-    <meta name="author" content="Lilyana - 61887, Eva - 61940" />
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="description" content="Wevip - FMI project"/>
 
-    <title>Математика за матура</title>
+      <link th:href="@{/css/ui/style.css}" rel="stylesheet" />
+      <link th:href="@{/css/ui/index-style.css}" rel="stylesheet" />
 
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
-    <link th:href="@{/css/index.css}" rel="stylesheet" />
-</head>
-
-<body>
-
-    <header>
-
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
-
-            <a class="navbar-brand" href="/index">Математика за матура</a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/index">Начало<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/main">Дялове на математиката</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/noSolutionTasks">Задачи без решения</a>
-                    </li>
-                </ul>
-
-                <form class="form-inline my-2 my-lg-0">
-                    <a class="nav-link user-p" href="#"></a>
-                    <a class="nav-link" href="/loginForm"><img id="logout" th:src="@{/images/logoutIcon.png}" width="30" height="30" />
-                        <img id="signin" th:src="@{/images/loginIcon.png}" width="30" height="30" /></a>
-                </form>
+      <title>Start screen</title>
+   </head>
+   <body>
+      <div id="content">
+         <header>
+            <img th:src="@{/images/ui/logo.png}" id="logo" alt="logo">
+            <button type="button" id="login-header" class="text-button" onclick="location.href='/loginForm'">Login</button>
+         </header>
+         <section id="main-section">
+            <h1>Eventize yourself</h1>
+            <h2>Ready for events?</h2>
+            <button type="button" id="register" value="REGISTER" class="btn" onclick="location.href='/registrationForm'">REGISTER<i class="fas fa-angle-right"></i></button>
+         </section>
+         <section id="main-options">
+            <div class="card">
+               <p>Explore more than<br/><span class="highlight">1,000 events</span><br/> available</p>
             </div>
-
-        </nav>
-
-    </header>
-
-    <main id="main" role="main">
-
-        <div class="carousel-item active" id="myCarousel">
-
-            <img th:src="@{/images/indexImage1.jpg}" />
-
-            <div class="container">
-
-                <div class="carousel-caption text-right">
-                    <h1>Математиката като предпочитано второ ДЗИ</h1>
-                    <p>Ако и вие сте от зрелостниците насочили се към математиката, то това е най-подходящото място да започнете подготовката си.</p>
-                    <p><a class="btn btn-lg btn-primary" href="/registrationForm" role="button">Регистриране</a></p>
-                </div>
+            <div class="card">
+               <p>Find the most<br/><span class="highlight">interesting</span><br/> events</p>
             </div>
-
-        </div>
-
-        <div class="container marketing">
-
-            <div class="row">
-
-                <div class="col-lg-4">
-                    <img class="rounded-circle" th:src="@{/images/indexImage1.jpg}" alt="Generic placeholder image" width="140" height="140" />
-                    <h2>ДЗИ 2 - Математика</h2>
-                    <p>Искаш да се подготвиш добре по математика за матурата? Регистрирай се сега и започни да решаваш задачи!
-                    </p>
-                    <p><a class="btn btn-secondary" href="/registrationForm" role="button">Детайли &raquo;</a></p>
-                </div>
-
-                <div class="col-lg-4">
-                    <img class="rounded-circle" th:src="@{/images/indexImage2.jpg}" alt="Generic placeholder image" width="140" height="140" />
-                    <h2>Първи стъпки</h2>
-                    <p>Най-лесният и удобен начин за подготовка е чрез систематично минаване през материала. Именно тук можеш да откриеш задачите подредени по дялове и трудност!</p>
-                    <p><a class="btn btn-secondary" href="/index" role="button">Детайли &raquo;</a></p>
-                </div>
-
-                <div class="col-lg-4">
-                    <img class="rounded-circle" th:src="@{/images/indexImage3.jpg}" alt="Generic placeholder image" width="140" height="140" />
-                    <h2>Главоблъсканици</h2>
-                    <p>Секцията "Задачи без решения" предоставя възможност на регистрираните потребители да предизвикват себе си с малко по интересни задачи по материала.</p>
-                    <p><a class="btn btn-secondary" href="/loginForm" role="button">Детайли &raquo;</a></p>
-                </div>
-
+            <div class="card">
+               <p>Join our community<br/><span class="highlight">1,000,000</span><br/>watch online</p>
             </div>
-
-        </div>
-
-        <footer class="container">
-            <p class="footerHeading">&copy; 2018-2019 ELLE</p>
-        </footer>
-
-        <script th:src="@{/js/jquery.min.js}"></script>
-        <script th:src="@{/js/logout.js}"></script>
-
-
-    </main>
-</body>
-
+         </section>
+      </div>
+      <footer>
+         <button class="text-button">About us</button>
+         <button class="text-button">Team</button>
+         <button class="text-button">Contact us</button>
+      </footer>
+   </body>
 </html>

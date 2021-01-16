@@ -1,128 +1,108 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8"/>
+<!DOCTYPE html>
+<html>
+   <head>
+	<meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content="FMI - project"/>
-    <meta name="author" content="Lilyana - 61887, Eva - 61940"/>
-    <title>Математика за матура</title>
+    <meta name="description" content="Wevip - FMI project"/>
 
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/css/registrationForm.css}" rel="stylesheet"/>
-</head>
+    <link th:href="@{/css/ui/style.css}" rel="stylesheet"/>
+    <link th:href="@{/css/ui/login-style.css}" rel="stylesheet"/>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+	
+    <script src="https://kit.fontawesome.com/0b4303f61f.js" crossorigin="anonymous"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/registrationForm.js}"></script>
+	
+	<title>Register</title>
 
-<body class="text-center">
+   </head>
+   <body>
+      <div id="content">
+         <header>
+			<img th:src="@{/images/ui/logo.png}" id="logo" alt="logo" onclick="location.href='/index'">
+			<button type="button" id="login-header" class="text-button" onclick="location.href='/loginForm'">Login</button>
+         </header>
+         <section id="register-section">
+            <div id="wrapper-popup">
+				<div id="wrapper" class="extended">
+				<div id="registration-steps">
+					<h1>Register</h1>
+				</div>
+					<div class="form-group field">
+						<input type="text" class="form-field" id="name" name="name" placeholder="Username" required>
+						<label for="name" class="form-label">Username</label> 
+					</div>
 
-<header>
+					<div class="form-group field">
+						<input type="email" class="form-field" id="email" name="email" placeholder="Email" required>
+						<label for="email" class="form-label">Email</label> 
+					</div>
+					<p class="error">Invalid email</p>
 
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+					<div class="form-group field">
+						<input type="password" class="form-field" id="password" placeholder="Password" name="password">
+						<label for="password"  class="form-label">Password</label>
+					</div>
+				
+					<div class="form-group field">
+							<input type="password" class="form-field" id="repeatPassword" placeholder="Confirm Password" name="repeatPassword">
+							<label for="repeatPassword" class="form-label">Confirm Password</label>
+					</div>
+					<p class="error">Passwords do not match</p>
+				
+						<h2>Credit card details</h2>
+						<div class="dropdown-bar">
+							<div class="dropdown-content">
+								 <label></label> 
+								<ul>
+									<li><a href="#" id="selected_card" class="activeli">Visa<i class="fa fa-angle-down"></i></a>
+										<ul>
+											<li><a href="#" id="card_1" onClick="setCurrentCreditCard(this.id)">MasterCard</a></li>
+											<li><a href="#" id="card_2" onClick="setCurrentCreditCard(this.id)">AmericanExpress</a><li>
+											<li><a href="#" id="card_3" onClick="setCurrentCreditCard(this.id)">Diners Club</a><li></li>
+											</li>
+										</ul>
+									</li>
+									</ul>
+							</div>
+						</div>
 
-        <a class="navbar-brand" href="/index">Математика за матура</a>
+						<div class="form-group field">
+							<input type="text" class="form-field" id="name-on-card" name="name-on-card" placeholder="Name on card" required>
+							<label for="name-on-card" class="form-label">Name on card</label> 
+						</div>
+						<p class="error">Invalid name.Please provide first and last name.</p>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+						<div class="form-group field">
+							<input type="text" class="form-field" id="card-number" name="card-number" placeholder="Card number" required>
+							<label for="card-number" class="form-label">Card number</label> 
+						</div>
+						<p class="error">Invalid card number. Verify you have selected the correct credit card type.</p>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<div class="form-group field">
+							<input type="text" class="form-field" id="expiry-date" name="expiry-date" placeholder="Expiry date" required>
+							<label for="expiry-date" class="form-label">Expiry date</label> 
+						</div>
+						<p class="error">Invalid expiry date</p>
 
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/index">Начало</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/main">Дялове на математиката</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Задачи без решения</a>
-                </li>
-            </ul>
-
-            <form class="form-inline my-2 my-lg-0">
-                <a class="nav-link" href="/loginForm"><img th:src="@{/images/loginIcon.png}" width="30"
-                                                           height="30"/></a>
-            </form>
-
-        </div>
-
-    </nav>
-
-</header>
-
-<main role="main">
-
-    <form class="register">
-
-        <img class="mb-4" th:src="@{/images/maths.JPG}" alt="maths" width="80" height="80"/>
-
-        <h2 class="h3 mb-3 font-weight-normal">Регистрация</h2>
-
-        <label for="name">Потребителско име*</label>
-        <input type="text" id="name" class="field" placeholder="Име" required="required" autofocus="autofocus"/>
-
-        <label for="email">Email*</label>
-        <input type="email" id="email" class="field" placeholder="Email" required="required"/>
-
-        <label for="password">Парола*</label>
-        <input type="password" id="password" class="field" placeholder="Парола" required="required"/>
-
-        <label for="password">Повтори парола*</label>
-        <input type="password" id="repeatPassword" class="field" placeholder="Повтори парола" required="required"/>
-
-        <button class="btn btn-lg btn-primary btn-block" id="register">Регистрация</button>
-
-        <a href="/loginForm">Вече сте регистриран?</a>
-
-    </form>
-
-    <div class="container marketing">
-
-        <div class="row">
-
-            <div class="col-lg-4">
-                <img class="rounded-circle" th:src="@{/images/indexImage1.jpg}" alt="Generic placeholder image"
-                     width="140"
-                     height="140"/>
-                <h2>ДЗИ 2 - Математика</h2>
-                <p>Искаш да се подготвиш добре по математика за матурата? Регистрирай се сега и започни да решаваш
-                    задачи!</p>
-                <p><a class="btn btn-secondary" href="/registrationForm" role="button">Детайли &raquo;</a></p>
+						<div class="form-group field">
+							<input type="text" class="form-field" id="security-code" name="security-code" placeholder="CVV code" required>
+							<label for="security-code" class="form-label">CVV code</label> 
+						</div>
+						<p class="error">Invalid CVV code</p>
+				
+                  <div id="buttons">
+                     <button type="submit" id="register" value="register" class="btn">Register</button>
+                  </div>
+               </div>
             </div>
-
-            <div class="col-lg-4">
-                <img class="rounded-circle" th:src="@{/images/indexImage2.jpg}" alt="Generic placeholder image"
-                     width="140"
-                     height="140"/>
-                <h2>Първи стъпки</h2>
-                <p>Най-лесният и удобен начин за подготовка е чрез систематично минаване през материала. Именно тук
-                    можеш да откриеш задачите подредени по дялове и трудност!</p>
-                <p><a class="btn btn-secondary" href="/index" role="button">Детайли &raquo;</a></p>
-            </div>
-
-            <div class="col-lg-4">
-                <img class="rounded-circle" th:src="@{/images/indexImage3.jpg}" alt="Generic placeholder image"
-                     width="140"
-                     height="140"/>
-                <h2>Главоблъсканици</h2>
-                <p>Секцията "Задачи без решения" предоставя възможност на регистрираните потребители да предизвикват
-                    себе си с малко по интересни задачи по материала.</p>
-                <p><a class="btn btn-secondary" href="/loginForm" role="button">Детайли &raquo;</a></p>
-            </div>
-
-        </div>
-
-    </div>
-
-    <footer class="container">
-        <p class="footerHeading">&copy; 2018-2019 ELLE</p>
-    </footer>
-
-    <script th:src="@{/js/jquery.min.js}"></script>
-    <script th:src="@{/js/registrationForm.js}"></script>
-
-</main>
-
-</body>
-
+         </section>
+      </div>
+      <footer>
+		<button class="text-button">About us</button>
+		<button class="text-button">Team</button>
+		<button class="text-button">Contact us</button>
+      </footer>
+   </body>
 </html>

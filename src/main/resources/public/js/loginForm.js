@@ -26,7 +26,7 @@ $(document).ready(function () {
         data: JSON.stringify(formData),
         success: function () {
           sessionStorage.setItem("username", username);
-          window.location.href = "/main";
+          window.location.href = "/events";
         },
         error: function (jqXHR) {
           if (jqXHR.status === 401) {
