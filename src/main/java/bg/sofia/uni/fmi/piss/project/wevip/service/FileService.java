@@ -70,7 +70,7 @@ public class FileService {
 			ois.close();
 			oos.close();
 
-			return message.equals("1");
+			return message.equals('1');
 		} catch (Exception e) {
 			e.printStackTrace();
 			return true;
