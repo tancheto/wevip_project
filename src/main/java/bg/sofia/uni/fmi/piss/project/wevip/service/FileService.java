@@ -33,7 +33,7 @@ public class FileService {
 				tempFile.delete();
 
 				return new ResponseEntity<>("You sent a picture with inappropriate content!",
-						HttpStatus.FORBIDDEN);
+						HttpStatus.OK);
 			}
 
 			String uploadDir = USER_DIR + username;
@@ -70,7 +70,7 @@ public class FileService {
 			ois.close();
 			oos.close();
 
-			return message.equals('1');
+			return message.equals(49);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return true;
