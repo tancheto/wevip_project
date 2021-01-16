@@ -63,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Bean(name = "multipartResolver")
   public CommonsMultipartResolver multipartResolver() {
     CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-    multipartResolver.setMaxUploadSize(200000);
+    multipartResolver.setMaxUploadSize(Long.MAX_VALUE);
     return multipartResolver;
   }
 }
