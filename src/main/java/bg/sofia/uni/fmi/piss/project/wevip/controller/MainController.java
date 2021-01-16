@@ -26,29 +26,19 @@ public class MainController {
     return "main";
   }
 
-  @GetMapping("/practice/{taskId}")
-  String practice() {
-    return "practice";
+  @GetMapping("/users")
+  String users() {
+    return "users";
   }
 
-  @GetMapping("/noSolutionTasks")
-  String noSolutionTasks() {
-    return "noSolutionTasks";
+  @GetMapping("/userProfile")
+  String userProfile() {
+    return "user-profile.html";
   }
 
-  @GetMapping("/offer")
-  String offer() {
-    return "offer";
-  }
-
-  @GetMapping("/add")
-  String add() {
-    return "add";
-  }
-
-  @GetMapping("/approve")
-  String approve() {
-    return "approve";
+  @GetMapping("/settings")
+  String settings() {
+    return "settings.html";
   }
 
   @GetMapping("/events")
