@@ -165,6 +165,12 @@ function showEventScreen(event) {
     //popup elements
     document.getElementById("popup-event-name").innerHTML = "<b>" + event.name + "</b>";
     document.getElementById("popup-event-price").innerHTML = "<b>$" + event.ticketPrice + "</b>";
+    localStorage.setItem("event-price",event.ticketPrice);
+    
+    localStorage.setItem("event-name",event.name);
+    console.log("price = ", localStorage.getItem('event-price'));
+    console.log("name = ", localStorage.getItem('event-name'));
+    
     var type = event.type;
 
     //document.getElementById("type").innerHTML = type + event.type;
@@ -183,6 +189,10 @@ function showEventScreen(event) {
         if (ids[i] == "duration")
             document.getElementById(ids[i]).innerHTML += " hours";
     }
+    var successfulMessage = document.getElementById("popup-message").innerHTML;
+    console.log(successfulMessage);
+    localStorage.setItem("popup-message",successfulMessage);
+    console.log("LOCAL storage =", localStorage.getItem('popup-message'));
 }
 
 function getEventPosterById(id, selector) {
@@ -265,7 +275,7 @@ function displayEvents(events, h1_name) {
 
         let eventDiv = document.createElement('div');
         let currentId = events[i].eventId;
-        eventDiv.id = currentId;
+        eventDiv.setAttribute("id", currentId);
         eventDiv.className = 'event-card';
         let selector = "#" + currentId;
 

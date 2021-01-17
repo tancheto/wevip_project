@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content="Wevip - FMI project"/>
-
+	<link rel="icon" type="image/png" href="https://i.ibb.co/QFjMRm9/favicon-wevip.png">
     <link th:href="@{/css/ui/style.css}" rel="stylesheet"/>
     <link th:href="@{/css/ui/login-style.css}" rel="stylesheet"/>
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
@@ -56,11 +56,11 @@
 							<div class="dropdown-content">
 								 <label></label> 
 								<ul>
-									<li><a href="#" id="selected_card" class="activeli">Visa<i class="fa fa-angle-down"></i></a>
+									<li><a id="selected_card" class="activeli">Visa<i class="fa fa-angle-down"></i></a>
 										<ul>
-											<li><a href="#" id="card_1" onClick="setCurrentCreditCard(this.id)">MasterCard</a></li>
-											<li><a href="#" id="card_2" onClick="setCurrentCreditCard(this.id)">AmericanExpress</a><li>
-											<li><a href="#" id="card_3" onClick="setCurrentCreditCard(this.id)">Diners Club</a><li></li>
+											<li><a id="card_1" onClick="setCurrentCreditCard(this.id)">MasterCard</a></li>
+											<li><a id="card_2" onClick="setCurrentCreditCard(this.id)">AmericanExpress</a><li>
+											<li><a id="card_3" onClick="setCurrentCreditCard(this.id)">Diners Club</a><li></li>
 											</li>
 										</ul>
 									</li>
@@ -92,9 +92,9 @@
 						</div>
 						<p class="error">Invalid CVV code</p>
 				
-                  <div id="buttons">
+                 
                      <button type="submit" id="register" value="register" class="btn">Register</button>
-                  </div>
+                  
                </div>
             </div>
          </section>

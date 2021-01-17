@@ -49,8 +49,8 @@ color: var(--dark-grey);
 	margin-top:50px;
 	display: block;
 	display: flex;
-	align-items: right;
-	justify-content: right;
+	align-items: center;
+	justify-content: center;
 	position: relative;
 
 }
@@ -90,7 +90,8 @@ h1{
 }
 .main-column{
 	width:50vw;
-	min-height:70vh;
+	min-height:90vh;
+	height:auto;
 	margin: 0px auto;
 	
 }

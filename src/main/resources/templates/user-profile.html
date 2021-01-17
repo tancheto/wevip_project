@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<link th:href="@{/css/ui/style.css}" rel="stylesheet" />
 	<link th:href="@{/css/ui/user-profile-style.css}" rel="stylesheet" />
+	<link rel="icon" type="image/png" href="https://i.ibb.co/QFjMRm9/favicon-wevip.png">
 	<script defer th:src="@{/js/ui/event-screen-script.js}"></script>
 	<link th:href="@{/css/ui/event-screen-style.css}" rel="stylesheet" />
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
@@ -18,7 +19,7 @@
 <body>
 	<div id="content">
 		<header>
-			<a href="#"><img th:src="@{/images/ui/logo.png}" id="logo" alt="logo" onclick="location.href='/index'"></a>
+			<a href="#"><img th:src="@{/images/ui/logo.png}" id="logo" alt="logo"></a>
 			<nav id="nav-bar">
 				<ul>
 					<li><a href="#">Events</a>
@@ -35,6 +36,7 @@
 						</a>
 						<ul>
 							<li><a href="/settings">My profile</a></li>
+							<li><a href="/index">Log out</a></li>
 						</ul>
 					</li>
 				</ul>
