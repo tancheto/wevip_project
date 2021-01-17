@@ -9,7 +9,8 @@
      --light-blue: #90caf9;
 }
 #content{
-	min-height:100vh;
+    min-height:100vh;
+    height:auto;
     overflow: hidden;
 }
 

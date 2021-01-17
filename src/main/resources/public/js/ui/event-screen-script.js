@@ -10,11 +10,11 @@ function showPopup(popup_id) {
   }
   if (!flag) {
     document.querySelector("#confirmation-popup h1").innerText = "Done";
-    document.querySelector("#confirmation-popup .popup-content > p").innerText = successfulMessage;
+    document.querySelector("#popup-message").innerHTML = localStorage.getItem('popup-message');
+    //document.getElementById("popup-event-name").innerText = localStorage.getItem("event-name");
+    //document.getElementById("popup-event-price").innerText = localStorage.getItem("event-price"); 
     currentUserTickets.push(ticketBought);
     localStorage.setItem("userTickets", JSON.stringify(currentUserTickets));
-    console.log("tickets reg: ", currentUserTickets);
-    console.log("TICKETS LOCALTORAGE: ", JSON.parse(localStorage.getItem("userTickets")));
   }
   if (flag) {
     document.querySelector("#confirmation-popup h1").innerText = "Error";
