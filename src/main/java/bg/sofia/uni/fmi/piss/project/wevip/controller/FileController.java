@@ -18,8 +18,8 @@ public class FileController {
     FileService fileService;
 
     @PostMapping("/upload")
-    public ResponseEntity uploadFile(@RequestParam("img") MultipartFile file,
-                                     @RequestParam("username") String username) {
+    public ResponseEntity uploadFile(@RequestParam("profile_pic") MultipartFile file,
+                                     @RequestParam("username_form") String username) {
 
         return fileService.uploadFile(file, username);
     }

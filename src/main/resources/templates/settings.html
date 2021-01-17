@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8">
@@ -45,10 +45,12 @@
 						<h1>My profile</h1>
 						<h2 id="username-h2">Username:</h2>
 						<h2 id="email-h2">Email:</h2>
-						<form name="profile_pic_upload" method="post" onsubmit="onFileUploadSubmit()">
+						<form name="profile_pic_upload" method="POST" th:action="@{/file/upload}"
+							  enctype="multipart/form-data" onsubmit="onFileUploadSubmit()">
 							<label for="profile_pic" class="custom-upload" id="uploadLabel"><i
 									class="fa fa-cloud-upload fa-3x" aria-hidden="true"></i><br>Upload photo</label>
 							<input type="file" id="profile_pic" name="profile_pic" accept="image/*" required />
+							<input type="hidden" id="username_form" value="" name="username_form">
 							<h2 id="uploaded-h2">Uploaded photo preview</h2>
 							<img id="pic_preview" src="#" alt="" />
 							<input type="submit" value="Save" id="saveBtn">
