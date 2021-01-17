@@ -42,16 +42,16 @@ function getCurrentUser() {
 
 function onFileUploadSubmit() {
     document.getElementById("username_form").value = sessionStorage.getItem('username');
-}
 
-('#profile_pic_upload')
-.ajaxForm({
-        url: '/file/upload',
-        type: "POST",
-        success: function(response) {
-            alert("The server says: " + response);
-        }
-    });
+    $('#profile_pic_upload')
+    .ajaxForm({
+            url: '/file/upload',
+            type: "POST",
+            success: function(response) {
+                alert("The server says: " + response);
+            }
+        });
+}
 
 function readURL(input) {
 	if (input.files && input.files[0]) {
