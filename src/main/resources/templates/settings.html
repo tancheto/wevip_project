@@ -19,7 +19,7 @@
             <a href="#"><img th:src="@{/images/ui/logo.png}" id="logo" alt="logo" onclick="location.href='/index'"></a>
             <nav id="nav-bar">
                 <ul>
-                    <li><a href="#">Events</a>
+                    <li><a href="/events">Events</a>
                         <ul>
                             <li><a id="a-events-top30" href="/events">Top 30</a></li>
                             <li><a id="a-events-all" href="/events">All events</a></li>
@@ -28,12 +28,13 @@
                     <li><a href="/userProfile">My collection</a></li>
                     <li><a href="/users">Users</a></li>
                     <li id="account-button">
-                        <a href="#">
+                        <a href="/settings">
                             <i id="username">vixypixy</i>
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul>
                             <li><a href="/settings">My profile</a></li>
+                            <li><a href="/index">Log out</a></li>
                         </ul>
                     </li>
                 </ul>
