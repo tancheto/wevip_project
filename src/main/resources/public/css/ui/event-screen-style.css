@@ -54,6 +54,11 @@ color: var(--dark-grey);
 	position: relative;
 
 }
+.event-screen >img{
+	width: 50vw;
+	height:auto;
+   
+  }
 .event-screen header{
     position: absolute;
 	top:0px;

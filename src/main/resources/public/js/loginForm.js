@@ -26,6 +26,11 @@ $(document).ready(function () {
         data: JSON.stringify(formData),
         success: function () {
           sessionStorage.setItem("username", username);
+          localStorage.setItem("username", username);
+          var userTickets = [];
+          localStorage.setItem("userTickets", JSON.stringify(userTickets));
+          console.log("USER ", localStorage.getItem("username"),"|| userTickets: ",localStorage.getItem("userEmail"));
+
           window.location.href = "/events";
         },
         error: function (jqXHR) {

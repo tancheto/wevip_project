@@ -1,3 +1,20 @@
+
+document.getElementById("a-events-top30").addEventListener("click", function (e) {
+    console.log("clickeddeded 30");
+    localStorage.setItem("active-events", "top30");
+    console.log("active tab = ", localStorage.getItem("active-events"));
+});
+document.getElementById("a-events-all").addEventListener("click", function (e) {
+    localStorage.setItem("active-events", "all");
+    console.log("active tab = ", localStorage.getItem("active-events"));
+});
+
+
+document.addEventListener("DOMContentLoaded", function(event){
+	document.getElementById("username").innerText = localStorage.getItem("username");
+	getCurrentUser();
+})
+
 function ShowSaveConfirmation(){
 	document.getElementById("save-info-message").style.visibility="visible";
 }
@@ -6,55 +23,49 @@ function HideSaveConfirmation(){
 	document.getElementById("save-info-message").style.visibility="hidden";
 }
 
-function getCurrentUser()
-{
-	return document.querySelector("#dropdown-bar ul li a:first-child").textContent;
+function getCurrentUser() {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/user/current/" + sessionStorage.getItem('username'),
+        success: function (user) {
+			console.log(user);
+			document.getElementById("username-h2").innerHTML = "<h2>Username: "+user.username+"</h2>";
+			document.getElementById("email-h2").innerHTML = "<h2>Email: "+user.email+"</h2>";
+
+        },
+        error: function (e) {
+            console.log("ERROR: ", e);
+        }
+    });
 }
 
-function setCurrentUser(user_id){
-	let currentUserElement = document.querySelector("#dropdown-bar ul li a:first-child");
-	let oldUser = currentUserElement.textContent; //old user because will be replased with new current user
-	let saveBtn = document.getElementById("saveBtn");
-	
-    let oldUserElement = document.getElementById(user_id);
-	let currentUser = oldUserElement.textContent;
-	console.log(currentUser);
-	console.log(currentUserElement.textContent);
-	currentUserElement.innerHTML = currentUser + '<i class="fa fa-angle-down"></i>';
-	oldUserElement.innerHTML = oldUser;
-
-	let mainAccountOptions = document.querySelectorAll("#left-section ul li:nth-child(5), #left-section ul li:nth-child(6)");
-	let mainAccountSections = document.querySelectorAll("#main-section-div > section > div:nth-child(5), #main-section-div > section > div:nth-child(6)");
-	if(!checkIfMainAccount())
-		{
-
-			if(mainAccountOptions[0].querySelector("a").classList.contains("activeli") || mainAccountOptions[1].querySelector("a").classList.contains("activeli"))
-			{
-				saveBtn.style.visibility = 'hidden';
-			}
-			for(let i=0;i<2;i++)
-			{
-				console.log(mainAccountOptions[i]);
-				mainAccountOptions[i].style.visibility = "hidden";
-				mainAccountSections[i].style.visibility = "hidden";
-			}
-		} else
-			{
-				for(let i=0;i<2;i++)
-					{
-						console.log(mainAccountOptions[i]);
-						mainAccountOptions[i].style.visibility = "visible";
-						mainAccountSections[i].style.visibility = "visible";
-					}
-			
-			}
+function onFileUploadSubmit() {
+    //document.getElementById("username").value = sessionStorage.getItem('username');
+	$('#profile_pic_upload')
+    .ajaxForm({
+        url: '/file/upload',
+        type: "POST",
+        success: function(response) {
+            alert("The server says: " + response);
+        }
+	});
 }
-function startFunc()
-{
-		document.addEventListener('DOMContentLoaded', (event) => {
-	let subsectionList= document.querySelectorAll("#manage-profiles-section > div");
-	for(let i=0;i<subsectionList.length;i++)
-	{
-		subsectionList.style.display="none";
-	}});
-}
+
+function readURL(input) {
+	if (input.files && input.files[0]) {
+	  var reader = new FileReader();
+	  
+	  reader.onload = function(e) {
+		$('#pic_preview').attr('src', e.target.result);
+	  }
+	  
+	  reader.readAsDataURL(input.files[0]); // convert to base64 string
+	}
+  }
+  
+  $("#profile_pic").change(function() {
+	document.getElementById('uploaded-h2').style.visibility = "visible";
+	readURL(this);
+  });
+

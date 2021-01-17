@@ -137,7 +137,6 @@ function validate()
 function setCurrentCreditCard(card_id){
 	let currentCardElement = document.querySelector(".dropdown-bar ul li a:first-child");
 	let oldCard = currentCardElement.textContent; //old user because will be replased with new current user
-	//let saveBtn = document.getElementById("saveBtn");
 	
     let oldCardElement = document.getElementById(card_id);
 	let currentCard = oldCardElement.textContent;

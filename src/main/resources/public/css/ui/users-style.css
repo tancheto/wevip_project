@@ -32,6 +32,7 @@
  .user-card p{
 margin:10px 0 10px 0;
 font-size: 24px;
+word-break: break-all;
  }
 .user-card:hover{
    box-shadow: 0 0 10px var(--dark-grey);
