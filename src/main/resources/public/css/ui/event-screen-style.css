@@ -43,7 +43,7 @@ color: var(--dark-grey);
 
 .event-screen{
 	height: 50vh;
-	background-color: black;
+	/* background-color: black; */
 	width: 50vw;
 	margin: 0px auto;
 	margin-top:50px;

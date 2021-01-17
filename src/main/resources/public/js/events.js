@@ -21,11 +21,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
     document.getElementById("username").innerText = localStorage.getItem("username");
 })
 $(document).ready(function () {
+    console.log(localStorage.getItem("active-events"));
+    if (localStorage.getItem("active-events") == undefined) {
+        localStorage.setItem("active-events", "all");
+        getAllEvents();
+    }
+
     if (localStorage.getItem("active-events") == "top30")
         getTop30Events();
-        
-    if(localStorage.getItem("active-events") == undefined)
-        getAllEvents();
 
     if (localStorage.getItem("active-events") == "all")
         getAllEvents();
@@ -157,7 +160,7 @@ function showEventScreen(event) {
     document.getElementById("all-events").style.display = "none";
     document.getElementById("event-screen").style.display = "block";
     document.getElementById("event-name").innerText = event.name;
-    let selector = "#event-screen";
+    let selector = ".event-screen";
     getEventPosterById(currentId, selector);
     //popup elements
     document.getElementById("popup-event-name").innerHTML = "<b>" + event.name + "</b>";
@@ -264,11 +267,7 @@ function displayEvents(events, h1_name) {
         let currentId = events[i].eventId;
         eventDiv.id = currentId;
         eventDiv.className = 'event-card';
-        let eventImg = document.createElement('img');
-
         let selector = "#" + currentId;
-        getEventPosterById(currentId, selector);
-        eventDiv.appendChild(eventImg);
 
         let eventName = document.createElement('p');
         let text = document.createTextNode(events[i].name.toUpperCase());
@@ -285,6 +284,7 @@ function displayEvents(events, h1_name) {
         eventPrice.appendChild(price);
         eventDiv.appendChild(eventPrice);
         container.appendChild(eventDiv);
+        getEventPosterById(currentId, selector);
 
         eventDiv.addEventListener("click", function (e) {
             console.log(e.target.id);
@@ -342,6 +342,7 @@ function setCurrentOption(dropdown_id, option_id) {
     currentOptionElement.innerHTML = currentOption + '<i class="fa fa-angle-down"></i>';
     oldOptionElement.innerHTML = oldOption;
 
+   
     switch (dropdown_id + '|' + currentOption) {
         case "1|Upcoming events": { console.log("Time filtering"); getUpcomingEvents(); break; }
         case "1|Time": { console.log("Time unfiltering"); window[functionName](); break; }//calling getTop30Events() or getAllEvents() according to option chosen by user}
