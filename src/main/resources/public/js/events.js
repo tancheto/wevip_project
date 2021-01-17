@@ -274,7 +274,7 @@ function displayEvents(events, h1_name) {
         let eventA = document.createElement('a');
 
         let eventDiv = document.createElement('div');
-        let currentId = events[i].eventId;
+        let currentId = "event_"+events[i].eventId;
         eventDiv.setAttribute("id", currentId);
         eventDiv.className = 'event-card';
         let selector = "#" + currentId;
@@ -298,7 +298,9 @@ function displayEvents(events, h1_name) {
 
         eventDiv.addEventListener("click", function (e) {
             console.log(e.target.id);
-            getEventById(e.target.id); // returns eventId object - to load in new html page
+            var eventId = e.target.id;
+            eventId = eventId.split("_")[1];
+            getEventById(eventId); // returns eventId object - to load in new html page
 
         });
     }

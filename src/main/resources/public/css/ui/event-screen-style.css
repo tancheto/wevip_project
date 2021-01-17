@@ -48,15 +48,14 @@ color: var(--dark-grey);
 	margin: 0px auto;
 	margin-top:50px;
 	display: block;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	position: relative;
+	overflow:hidden;
 
 }
 .event-screen >img{
 	width: 50vw;
 	height:auto;
+	overflow:hidden;
    
   }
 .event-screen header{
@@ -99,7 +98,9 @@ h1{
 	text-align: left;
 	display: block;
 }
-
+.event-info{
+	margin-top:50px;
+}
 .btn-event:hover, #saveBtn:hover{
 	background-color: var(--red-dark);
 	transform: scale(1.05);

@@ -20,6 +20,10 @@ html{
   font-family: 'Roboto';
   font-size: 16px;
 }
+#content{
+  min-height:100vh;
+  height:auto;
+}
 .event-card{
   width:250px;
   display: flex;
