@@ -21,8 +21,6 @@ public class FileController {
     @PostMapping("/upload/{username}")
     public ResponseEntity uploadFile(@RequestParam("profile_pic") MultipartFile file,
                                      @PathVariable String username) {
-                                     //@RequestParam("username_form") String username) {
-
         return fileService.uploadFile(file, username);
     }
 }
