@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 
-from nudity import Nudity
-import socket
 import os
+import socket
+import sys
 import warnings
-
-warnings.warn("this will not show")
 
 HOST = 'localhost'  # Standard loopback interface address (localhost)
 PORT = 5678        # Port to listen on (non-privileged ports are > 1023)
+
+sys.stdout = sys.stderr = open('/var/log/wevip', 'a')
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' # Disables tensorflow spamflow
+
+from nudity import Nudity
+
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
@@ -24,7 +28,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 else:
                     print("Received", data)
                     image = data.decode()
-                    #image = data
                     nudity = Nudity()
                     if nudity.has(image):
                         print("Porn")
@@ -32,3 +35,4 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     else:
                         print("Clear")
                         conn.sendall(b'0')
+        sys.stdout.flush()
