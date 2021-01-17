@@ -2,75 +2,71 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="utf-8">
-	<link th:href="@{/css/ui/style.css}" rel="stylesheet" />
-	<link th:href="@{/css/ui/settings-style.css}" rel="stylesheet" />
-	<link rel="icon" type="image/png" href="https://i.ibb.co/QFjMRm9/favicon-wevip.png">
-	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-	<script src="https://kit.fontawesome.com/0b4303f61f.js" crossorigin="anonymous"></script>
-	<script th:src="@{/js/jquery.min.js}"></script>
-	<script defer th:src="@{/js/ui/settings-script.js}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha512-YUkaLm+KJ5lQXDBdqBqk7EVhJAdxRnVdT2vtCzwPHSweCzyMgYV/tgGF4/dCyqtCC2eCphz0lRQgatGVdfR0ww==" crossorigin="anonymous"></script>
-	<title>Settings</title>
+    <meta charset="utf-8">
+    <link th:href="@{/css/ui/style.css}" rel="stylesheet" />
+    <link th:href="@{/css/ui/settings-style.css}" rel="stylesheet" />
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/0b4303f61f.js" crossorigin="anonymous"></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script defer th:src="@{/js/ui/settings-script.js}"></script>
+    <title>Settings</title>
 </head>
 
 <body>
-	<div id="content">
-		<header>
-			<a><img th:src="@{/images/ui/logo.png}" id="logo" alt="logo"></a>
-			<nav id="nav-bar">
-				<ul>
-					<li><a href="#">Events</a>
-						<ul>
-							<li><a id="a-events-top30" href="/events">Top 30</a></li>
-							<li><a id="a-events-all" href="/events">All events</a></li>
-						</ul>
-					</li>
-					<li><a href="/userProfile">My collection</a></li>
-					<li><a href="/users">Users</a></li>
-					<li id="account-button"><a href="#">
-							<label id="username">vixypixy</label>
-							<i class="fa fa-angle-down"></i>
-						</a>
-						<ul>
-							<li><a href="/settings">My profile</a></li>
-							<li><a href="/index">Log out</a></li>
-						</ul>
-					</li>
-				</ul>
-			</nav>
-		</header>
-		<section id="settings-section">
-			<div id="main-section-div">
-				<section>
-					<div id="general-info-section">
-						<h1>My profile</h1>
-						<h2 id="username-h2">Username:</h2>
-						<h2 id="email-h2">Email:</h2>
-						<form name="profile_pic_upload" method="POST"
-							  enctype="multipart/form-data" onsubmit="onFileUploadSubmit()">
-							<label for="profile_pic" class="custom-upload" id="uploadLabel"><i
+    <div id="content">
+        <header>
+            <a href="#"><img th:src="@{/images/ui/logo.png}" id="logo" alt="logo" onclick="location.href='/index'"></a>
+            <nav id="nav-bar">
+                <ul>
+                    <li><a href="#">Events</a>
+                        <ul>
+                            <li><a id="a-events-top30" href="/events">Top 30</a></li>
+                            <li><a id="a-events-all" href="/events">All events</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/userProfile">My collection</a></li>
+                    <li><a href="/users">Users</a></li>
+                    <li id="account-button">
+                        <a href="#">
+                            <i id="username">vixypixy</i>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul>
+                            <li><a href="/settings">My profile</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section id="settings-section">
+            <div id="main-section-div">
+                <section>
+                    <div id="general-info-section">
+                        <h1>My profile</h1>
+                        <h2 id="username-h2">Username:</h2>
+                        <h2 id="email-h2">Email:</h2>
+                        <form id="profile_pic_upload" action="#" enctype="multipart/form-data"></form>
+                        <label for="profile_pic" class="custom-upload" id="uploadLabel"><i
 									class="fa fa-cloud-upload fa-3x" aria-hidden="true"></i><br>Upload photo</label>
-							<input type="file" id="profile_pic" name="profile_pic" accept="image/*" required />
-							<input type="hidden" id="username_form" value="" name="username_form">
-							<h2 id="uploaded-h2">Uploaded photo preview</h2>
-							<img id="pic_preview" src="#" alt="" />
-							<input type="submit" value="Save" id="saveBtn">
-							<p id="upload-error"></p>
-						</form>
-
-					</div>
-					</form>
-					<p id="save-info-message">Changes saved successfully!</p>
-				</section>
-			</div>
-		</section>
-	</div>
-	<footer>
-		<button class="text-button">About us</button>
-		<button class="text-button">Team</button>
-		<button class="text-button">Contact us</button>
-	</footer>
+                        <input type="file" id="profile_pic" name="profile_pic" accept="image/*" required />
+                        <input type="hidden" id="username_form" value="" name="username_form">
+                        <h2 id="uploaded-h2">Uploaded photo preview</h2>
+                        <img id="pic_preview" src="#" alt="" />
+                        <button type="submit" id="saveBtn" onclick="formSubmit(event)">Save</button>
+                        <p id="upload-error"></p>
+                        </form>
+                    </div>
+                    <p id="save-info-message">Changes saved successfully!</p>
+                </section>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <button class="text-button">About us</button>
+        <button class="text-button">Team</button>
+        <button class="text-button">Contact us</button>
+    </footer>
 </body>
 
 </html>
